@@ -1,5 +1,5 @@
 # PHP implementation of the Web ARChive (WARC) archive format
-Copyright 2019-2021 Philippe Paquet
+Copyright 2019-2023 Philippe Paquet
 
 ---
 
@@ -16,6 +16,8 @@ You can find specifications of the WARC format on the [BNF website](http://www.b
 For some history, check [Wikipedia](https://en.wikipedia.org/wiki/Web_ARChive)
 
 This PHP implementation of WARC will allow you to read WARC archives. It support both uncompressed and compressed WARC archives. It returns records as arrays, already parsed.
+
+PHP version 7.4 or later is required.
 
 ---
 
@@ -39,7 +41,7 @@ After creation, the warc object offer 4 simple functions:
 // Open the WARC file
 // Return TRUE if the operation was sucessful
 // Return FALSE if there was an error
-$result = $warc->open($filepath);
+$result = $warc->open(string $filepath);
 ```
 
 ```php

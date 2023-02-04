@@ -4,7 +4,9 @@
  *
  *  warc.inc.php
  *
- *  Copyright 2019-2021 Philippe Paquet
+ *  Version 1.1
+ *
+ *  Copyright 2019-2023 Philippe Paquet
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,6 +29,13 @@
 
 //
 // warc
+//
+// function __construct()
+//
+// function open(string $filepath)
+// function close()
+// function read()
+// function error()
 //
 
 class warc
@@ -77,7 +86,7 @@ class warc
 	// open
 	//
 
-	function open($filepath)
+	function open(string $filepath)
 	{
 		$this->handle = gzopen($filepath, 'r');
 		if (FALSE === $this->handle) {
@@ -137,12 +146,6 @@ class warc
 				if (FALSE === $content) {
 					$this->error = 'Read error';
 					return FALSE;
-				} else {
-					$content = mb_convert_encoding($content, 'UTF-8');
-					if (FALSE === $content) {
-						$this->error = 'Error converting to UTF-8';
-						return FALSE;
-					}
 				}
 
 				$line = gzgets($this->handle);
